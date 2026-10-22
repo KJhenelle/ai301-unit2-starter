@@ -25,29 +25,45 @@ like. Write the map you wish your grader had.
 
 ## Environment
 
-<!-- Where the environment record lives, and what a sufficient one
-looks like against the issue's stated target. -->
+### Where it lives
+* **Eval bundle:** Inside the repro report under the `Environment`, `System Info`, or `Configuration` block; compared directly against the issue context's stated runtime, OS, or dependency versions.
+* **Live mode:** In the user's reproduction draft under the environment section, verified against the repository's setup documentation and the issue thread's original bug report.
+
+### What good looks like
+The report explicitly lists the exact OS, runtime/compiler version, package versions, and relevant target tool flags. If the testing environment differs in major or minor version from the target described in the issue, the divergence is explicitly stated alongside a justification for why the behavior remains comparable.
 
 ## Steps
 
-<!-- Where the reproduction steps live, and what makes them followable
-by a stranger, starting state to trigger. -->
+### Where it lives
+* **Eval bundle:** Inside the repro report under `Steps to Reproduce`, `Reproduction Procedure`, or the initial numbered setup commands.
+* **Live mode:** In the reproduction comment draft, read directly against the target repository's directory structure and build scripts.
+
+### What good looks like
+The steps form an unbroken, ordered sequence starting from a known clean state (e.g., specific commit SHA, empty directory, or default template) to the trigger command. Every command, input argument, file edit, or configuration flag is written out completely, requiring no unstated global installs, undocumented flags, or guesswork to reach the reproduction point.
 
 ## Behavior shown
 
-<!-- Where the artifacts live (output excerpts, logs, screenshots),
-and what it means for an artifact to show the issue's behavior rather
-than an adjacent one. -->
+### Where it lives
+* **Eval bundle:** Inside the repro report's `Observed Behavior`, `Terminal Output`, `Logs`, or `Artifacts` section, cross-referenced with the error logs, exit codes, or misbehaviors cited in the issue context.
+* **Live mode:** In the terminal transcript, error trace, or diff excerpts within the draft comment, evaluated against the symptoms and bug descriptions reported on the GitHub issue thread.
+
+### What good looks like
+The captured artifact exhibits the exact failure mode, error string, panic, or faulty output described in the original issue report. Output that fails with a missing module, local syntax typo, permission denial, or build failure unrelated to the target bug is a failure to match behavior.
 
 ## Honesty
 
-<!-- Where claims and their backing meet: how to tell a report that
-says exactly what happened (including an honest cannot-reproduce) from
-one that claims more than its evidence shows. -->
+### Where it lives
+* **Eval bundle:** The repro report's `Verdict`, `Conclusion`, or `Result` line compared directly against the raw logs in the artifact section.
+* **Live mode:** The summary assertion in the draft comment compared against the attached execution output.
+
+### What good looks like
+The stated outcome matches the artifact. If the issue did not manifest, the report explicitly states "Cannot reproduce" and documents the clean run rather than claiming a successful repro. If the bug reproduced partially or required workarounds, the boundaries are stated plainly without overclaiming resolution or root cause certainty.
 
 ## Comms
 
-<!-- Where the words meet the repo: the claim comment against the
-issue, the comments against the repo's stated templates and
-contribution policy (including AI-use disclosure requirements), and
-what specific-and-honest looks like next to boilerplate. -->
+### Where it lives
+* **Eval bundle:** The `Claim Comment` and final comment body read against the `repo-facts` block and the original issue prompt.
+* **Live mode:** The text of the claim comment or pull request comment read against the target repository's `CONTRIBUTING.md`, issue templates, code of conduct, and mandatory AI-disclosure policies.
+
+### What good looks like
+The claim names the targeted behavior, specifies planned next steps, and commits to a reproduction timeline without boilerplate placeholders. All generated text adheres to repository conventions (including template headers and explicit AI-assistance disclosures where required), avoids generic chatbot preamble, and addresses the maintainers directly and concisely.
